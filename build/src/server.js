@@ -4,16 +4,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const apiGetTours_1 = require("./api/tours/apiGetTours");
-const apiGetTourDetail_1 = require("./api/tours/apiGetTourDetail");
+const data_1 = require("../data/data");
 const app = express_1.default();
-// console.log(JSON.parse(JSON.stringify(DataStore.tours)));
+console.log(data_1.DataStore.tours);
 app.get("/", (req, res, next) => {
     res.send("Tour Booking API");
 });
-app.get("/tours", apiGetTours_1.apiGetTours);
-app.get("/tours:/id", apiGetTourDetail_1.apiGetTourDetail);
-app.post("/tours", (req, res, next) => {
+app.get("/tours", (req, res, next) => {
+    res.send("Get a list of tours...");
+});
+app.get("/tours", (req, res, next) => {
     res.send("Add a new tour...");
 });
 app.listen(process.env.PORT || 8091, () => console.log("Server started..."));

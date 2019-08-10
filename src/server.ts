@@ -1,5 +1,6 @@
 import express from "express";
 import * as bodyParser from "body-parser";
+import morgan from "morgan";
 
 import { DataStore } from "./data/data";
 import { apiGetTours } from "./api/tours/apiGetTours";
@@ -12,6 +13,7 @@ import { CustomRequestHandler } from "./model/express";
 const app = express();
 const jsonParser = bodyParser.json();
 // app.use(bodyParser.urlencoded({ extended: true }));
+const urlEncodedParser = bodyParser.urlencoded({ extended: true });
 // const jsonParser = bodyParser.urlencoded({ extended: true });
 
 // console.log(JSON.parse(JSON.stringify(DataStore.tours)));
@@ -22,19 +24,20 @@ const authenticator: CustomRequestHandler = (req, res, next) => {
   next();
 };
 
-const logger: CustomRequestHandler = (req, res, next) => {
-  console.log(
-    "User: " +
-      req.user +
-      " - " +
-      new Date() +
-      " - " +
-      req.method +
-      " Request to " +
-      req.path
-  );
-  next();
-};
+const logger = morgan("dev");
+// const logger: CustomRequestHandler = (req, res, next) => {
+//   console.log(
+//     "User: " +
+//       req.user +
+//       " - " +
+//       new Date() +
+//       " - " +
+//       req.method +
+//       " Request to " +
+//       req.path
+//   );
+//   next();
+// };
 
 app.use(authenticator);
 app.use(logger); // applied to all
@@ -48,7 +51,7 @@ app.get("/tours", logger, apiGetTours);
 
 app.get("/tours/:id", apiGetTourDetail);
 
-app.post("/tours", jsonParser, apiCreateTour);
+app.post("/tours", urlEncodedParser, apiCreateTour);
 
 app.delete("/tours/:id", apiDeleteTour);
 

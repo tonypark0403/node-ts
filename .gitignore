@@ -2,4 +2,7 @@ node_modules
 
 .env
 *.lock
+
+#directory
 src/common/Constants.ts
+public

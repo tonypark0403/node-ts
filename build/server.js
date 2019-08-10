@@ -15,6 +15,7 @@ const bodyParser = __importStar(require("body-parser"));
 const apiGetTours_1 = require("./api/tours/apiGetTours");
 const apiGetTourDetail_1 = require("./api/tours/apiGetTourDetail");
 const apiCreateTour_1 = require("./api/tours/apiCreateTour");
+const apiDeleteTour_1 = require("./api/tours/apiDeleteTour");
 const app = express_1.default();
 const jsonParser = bodyParser.json();
 // app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,6 +25,7 @@ app.get("/", (req, res, next) => {
     res.send("Tour Booking API");
 });
 app.get("/tours", apiGetTours_1.apiGetTours);
-app.get("/tours:/id", apiGetTourDetail_1.apiGetTourDetail);
+app.get("/tours/:id", apiGetTourDetail_1.apiGetTourDetail);
 app.post("/tours", jsonParser, apiCreateTour_1.apiCreateTour);
+app.delete("/tours/:id", jsonParser, apiDeleteTour_1.apiDeleteTour);
 app.listen(process.env.PORT || 8091, () => console.log("Server started..."));

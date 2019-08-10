@@ -1,7 +1,7 @@
 import { DataStore } from "../../data/data";
 import { RequestHandler } from "express";
-import { TourSummary } from "../model/shared/tourSummary";
-import { TourDetail } from "../model/shared/tourDetail";
+import { TourSummary } from "../../model/shared/tourSummary";
+import { TourDetail } from "../../model/shared/tourDetail";
 
 export const apiGetTourDetail: RequestHandler = (req, res, next) => {
   const tourId = req.params.id;

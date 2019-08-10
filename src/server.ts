@@ -1,6 +1,7 @@
 import express from "express";
 import * as bodyParser from "body-parser";
 import morgan from "morgan";
+import path from "path";
 
 import { DataStore } from "./data/data";
 import { apiGetTours } from "./api/tours/apiGetTours";
@@ -41,6 +42,8 @@ const logger = morgan("dev");
 
 app.use(authenticator);
 app.use(logger); // applied to all
+
+app.use("/static", express.static(path.resolve("./", "public", "img")));
 
 app.get("/", (req, res, next) => {
   res.send("Tour Booking API");

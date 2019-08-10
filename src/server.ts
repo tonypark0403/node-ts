@@ -11,6 +11,7 @@ import { apiDeleteTour } from "./api/tours/apiDeleteTour";
 import { apiUpdateTour } from "./api/tours/apiUpdateTour";
 import { CustomRequestHandler } from "./model/express";
 import { apiUploadImage } from "./api/tours/apiUploadImage";
+import { apiErrorHandler } from "./api/general/errorHandling";
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -63,4 +64,8 @@ app.delete("/tours/:id", apiDeleteTour);
 app.patch("/tours/:id", jsonParser, apiUpdateTour);
 
 app.post("/tours/:id/img", apiUploadImage);
+
+//error handler should be put after all other middlewares
+app.use(apiErrorHandler);
+
 app.listen(process.env.PORT || 8091, () => console.log("Server started..."));

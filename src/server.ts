@@ -7,6 +7,7 @@ import { apiGetTourDetail } from "./api/tours/apiGetTourDetail";
 import { apiCreateTour } from "./api/tours/apiCreateTour";
 import { apiDeleteTour } from "./api/tours/apiDeleteTour";
 import { apiUpdateTour } from "./api/tours/apiUpdateTour";
+import { CustomRequestHandler } from "./model/express";
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -15,11 +16,35 @@ const jsonParser = bodyParser.json();
 
 // console.log(JSON.parse(JSON.stringify(DataStore.tours)));
 
+const authenticator: CustomRequestHandler = (req, res, next) => {
+  const username = "tony";
+  req.user = username;
+  next();
+};
+
+const logger: CustomRequestHandler = (req, res, next) => {
+  console.log(
+    "User: " +
+      req.user +
+      " - " +
+      new Date() +
+      " - " +
+      req.method +
+      " Request to " +
+      req.path
+  );
+  next();
+};
+
+app.use(authenticator);
+app.use(logger); // applied to all
+
 app.get("/", (req, res, next) => {
   res.send("Tour Booking API");
 });
 
-app.get("/tours", apiGetTours);
+// app.get("/tours", logger, apiGetTours); - only this is applied
+app.get("/tours", logger, apiGetTours);
 
 app.get("/tours/:id", apiGetTourDetail);
 

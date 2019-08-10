@@ -10,6 +10,7 @@ import { apiCreateTour } from "./api/tours/apiCreateTour";
 import { apiDeleteTour } from "./api/tours/apiDeleteTour";
 import { apiUpdateTour } from "./api/tours/apiUpdateTour";
 import { CustomRequestHandler } from "./model/express";
+import { apiUploadImage } from "./api/tours/apiUploadImage";
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -61,4 +62,5 @@ app.delete("/tours/:id", apiDeleteTour);
 // app.put("/tours/:id", jsonParser, apiUpdateTour);
 app.patch("/tours/:id", jsonParser, apiUpdateTour);
 
+app.post("/tours/:id/img", apiUploadImage);
 app.listen(process.env.PORT || 8091, () => console.log("Server started..."));

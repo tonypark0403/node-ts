@@ -13,6 +13,7 @@ import { CustomRequestHandler } from "./model/express";
 import { apiUploadImage } from "./api/tours/apiUploadImage";
 import { apiErrorHandler } from "./api/general/errorHandling";
 import { APIError } from "./model/shared/messages";
+import { dateParam } from "./api/general/reqParams/dateParam";
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -69,6 +70,13 @@ app.use("/static", express.static(path.resolve("./", "public", "img")));
 app.get("/", (req, res, next) => {
   res.send("Tour Booking API");
 });
+
+app.param("fromDate", dateParam);
+app.param("toDate", dateParam);
+
+app.get("/bookings/:fromDate/:toDate", (req, res, next) =>
+  res.json(req.params)
+);
 
 // app.get("/tours", logger, apiGetTours); - only this is applied
 app.get("/tours", logger, apiGetTours);

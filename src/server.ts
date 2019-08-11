@@ -14,6 +14,7 @@ import { apiUploadImage } from "./api/tours/apiUploadImage";
 import { apiErrorHandler } from "./api/general/errorHandling";
 import { APIError } from "./model/shared/messages";
 import { dateParam } from "./api/general/reqParams/dateParam";
+import { apiCheckTourFilters } from "./api/tours/apiCheckTourFilters";
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -71,15 +72,15 @@ app.get("/", (req, res, next) => {
   res.send("Tour Booking API");
 });
 
-app.param("fromDate", dateParam);
-app.param("toDate", dateParam);
+// app.param("fromDate", dateParam);
+// app.param("toDate", dateParam);
 
-app.get("/bookings/:fromDate/:toDate", (req, res, next) =>
-  res.json(req.params)
-);
+// app.get("/bookings/:fromDate/:toDate", (req, res, next) =>
+//   res.json(req.params)
+// );
 
 // app.get("/tours", logger, apiGetTours); - only this is applied
-app.get("/tours", logger, apiGetTours);
+app.get("/tours", apiCheckTourFilters, apiGetTours);
 
 app.get("/tours/:id", apiGetTourDetail);
 

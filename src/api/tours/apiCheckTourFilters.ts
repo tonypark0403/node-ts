@@ -7,7 +7,8 @@ export const apiCheckTourFilters: RequestHandler = (req, res, next) => {
   // console.log(filters);
   for (let filter of Object.getOwnPropertyNames(req.query)) {
     if (!filters.hasOwnProperty(filter)) {
-      next(new APIError("Query String Error", "No such filter.", 400));
+      // next(new APIError("Query String Error", "No such filter.", 400));
+      next(APIError.errInvalidQueryParameter({ filter: filter }));
     }
   }
   next();

@@ -12,6 +12,7 @@ import { apiUpdateTour } from "./api/tours/apiUpdateTour";
 import { CustomRequestHandler } from "./model/express";
 import { apiUploadImage } from "./api/tours/apiUploadImage";
 import { apiErrorHandler } from "./api/general/errorHandling";
+import { APIError } from "./model/shared/messages";
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -44,6 +45,24 @@ const logger = morgan("dev");
 
 app.use(authenticator);
 app.use(logger); // applied to all
+
+//middleware to test for access method /headers
+//only json
+app.use((req, res, next) => {
+  if (req.accepts("application/json")) {
+    next();
+  } else {
+    next(
+      new APIError(
+        "Content Type not supported",
+        "This API only supports application/json",
+        400
+      )
+    );
+  }
+});
+
+app.get("/headers", (req, res, next) => res.json(req.headers));
 
 app.use("/static", express.static(path.resolve("./", "public", "img")));
 

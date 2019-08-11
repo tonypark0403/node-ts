@@ -15,8 +15,10 @@ import { apiErrorHandler } from "./api/general/errorHandling";
 import { APIError } from "./model/shared/messages";
 import { dateParam } from "./api/general/reqParams/dateParam";
 import { apiCheckTourFilters } from "./api/tours/apiCheckTourFilters";
+import { apiDownloadImage } from "./api/tours/apiDownloadImage";
 
 const app = express();
+
 const jsonParser = bodyParser.json();
 // app.use(bodyParser.urlencoded({ extended: true }));
 const urlEncodedParser = bodyParser.urlencoded({ extended: true });
@@ -45,6 +47,15 @@ const logger = morgan("dev");
 //   next();
 // };
 
+app.use((req, res, next) => {
+  res.set({
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE"
+  });
+  next();
+});
+
+app.disable("x-powered-by");
 app.use(authenticator);
 app.use(logger); // applied to all
 
@@ -92,6 +103,8 @@ app.delete("/tours/:id", apiDeleteTour);
 app.patch("/tours/:id", jsonParser, apiUpdateTour);
 
 app.post("/tours/:id/img", apiUploadImage);
+
+app.get("/static/download/:id", apiDownloadImage);
 
 //error handler should be put after all other middlewares
 app.use(apiErrorHandler);

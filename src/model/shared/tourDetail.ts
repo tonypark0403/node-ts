@@ -1,6 +1,6 @@
 import { TourSummary } from "./tourSummary";
 import { Review } from "./reviews";
-import * as dbModel from "../../db/model_generated";
+import * as dbModelExt from "../../db/model_extensions";
 
 export class TourDetail extends TourSummary {
   tourCategory: string;
@@ -9,17 +9,13 @@ export class TourDetail extends TourSummary {
   currency: string;
   img: string[];
   reviews: Review[];
-  constructor(
-    tourData: dbModel.tours,
-    reviewData: dbModel.reviews[],
-    tourImages: string[]
-  ) {
-    super(tourData);
-    this.tourCategory = tourData.tour_category;
-    this.tourDescription = tourData.tour_description || "";
-    this.price = tourData.price;
-    this.currency = tourData.currency;
+  constructor(data: dbModelExt.toursWithReviews, tourImages: string[]) {
+    super(data);
+    this.tourCategory = data.tour_category;
+    this.tourDescription = data.tour_description || "";
+    this.price = data.price;
+    this.currency = data.currency;
     this.img = tourImages;
-    this.reviews = reviewData.map((item: any) => new Review(item));
+    this.reviews = data.reviews.map((item: any) => new Review(item));
   }
 }

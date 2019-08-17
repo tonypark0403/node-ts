@@ -1,9 +1,9 @@
 // import { DataStore } from "../../data/data";
 import { RequestHandler } from "express";
-import { TourSummary } from "../../model/shared/tourSummary";
-import { TourFilters } from "../../model/shared/tourFilters";
-import { db } from "../../db/db";
-import * as dbModel from "../../db/model_generated";
+import { TourSummary } from "../../../model/shared/tourSummary";
+import { TourFilters } from "../../../model/shared/tourFilters";
+import { db } from "../../../db/db";
+import * as dbModel from "../../../db/model_generated";
 
 export const apiGetTours: RequestHandler = (req, res, next) => {
   //test

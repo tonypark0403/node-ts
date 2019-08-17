@@ -1,11 +1,11 @@
-import { DataStore } from "../../data/data";
+import { DataStore } from "../../../data/data";
 import { RequestHandler } from "express";
-import { TourSummary } from "../../model/shared/tourSummary";
-import { TourDetail } from "../../model/shared/tourDetail";
+import { TourSummary } from "../../../model/shared/tourSummary";
+import { TourDetail } from "../../../model/shared/tourDetail";
 import { fileMapper } from "../general/static";
-import { APIError } from "../../model/shared/messages";
-import * as dbModelExt from "../../db/model_extensions";
-import { db, pgPromise } from "../../db/db";
+import { APIError } from "../../../model/shared/messages";
+import * as dbModelExt from "../../../db/model_extensions";
+import { db, pgPromise } from "../../../db/db";
 
 export const apiGetTourDetail: RequestHandler = (req, res, next) => {
   const tourId = req.params.id;

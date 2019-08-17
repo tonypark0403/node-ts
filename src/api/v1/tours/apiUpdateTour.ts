@@ -1,8 +1,8 @@
-import * as dbModel from "../../db/model_generated";
+import * as dbModel from "../../../db/model_generated";
 // import { DataStore } from "../../data/data";
 import { RequestHandler } from "express";
-import { PublicInfo, APIError } from "../../model/shared/messages";
-import { db, pgPromise } from "../../db/db";
+import { PublicInfo, APIError } from "../../../model/shared/messages";
+import { db, pgPromise } from "../../../db/db";
 const caseConverter = require("change-case-object");
 
 export const apiUpdateTour: RequestHandler = (req, res, next) => {

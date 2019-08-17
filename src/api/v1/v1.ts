@@ -9,8 +9,10 @@ import { userRouter } from "./users/apiUsers";
 import { toursRouter } from "./tours/apiTours";
 import { apiDownloadImage } from "./tours/apiDownloadImage";
 import { apiErrorHandler } from "./general/errorHandling";
-import { CustomRequestHandler } from "../model/express";
+import { CustomRequestHandler } from "../../model/express";
 import { dateParam } from "./general/reqParams/dateParam";
+import { urlEncodedParser } from "./general/bodyParser";
+import { apiTokenSignin } from "./auth/apiTokenSignin";
 
 export const routerV1 = Router();
 
@@ -48,6 +50,8 @@ routerV1.get("/", (req, res) => {
 routerV1.use("/users", userRouter);
 
 routerV1.use("/tours", toursRouter);
+
+routerV1.post("/tokensignin", urlEncodedParser, apiTokenSignin);
 
 routerV1.get("/static/download/:id", apiDownloadImage);
 

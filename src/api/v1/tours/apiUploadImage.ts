@@ -1,8 +1,8 @@
 // import { DataStore } from "../../data/data";
 import { RequestHandler } from "express";
 import { getFileUploader } from "../general/static";
-import { APIError, PublicInfo } from "../../model/shared/messages";
-import { db } from "../../db/db";
+import { APIError, PublicInfo } from "../../../model/shared/messages";
+import { db } from "../../../db/db";
 
 export const apiUploadImage: RequestHandler = (req, res, next) => {
   const tourID = req.params.id;

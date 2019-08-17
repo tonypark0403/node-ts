@@ -1,0 +1,9 @@
+ {
+    apiKey: "AIzaSyC49HCYTeu_Vlm_WkVOuH0hHpfBjlVzPpM",
+    authDomain: "tourapp-6f667.firebaseapp.com",
+    databaseURL: "https://tourapp-6f667.firebaseio.com",
+    projectId: "tourapp-6f667",
+    storageBucket: "",
+    messagingSenderId: "248644749142",
+    appId: "1:248644749142:web:7c300a6edfcac203"
+  };

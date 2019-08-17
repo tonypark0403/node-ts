@@ -1,5 +1,5 @@
 import express from "express";
-import { routerV1 } from "./api/v1";
+import { routerV1 } from "./api/v1/v1";
 
 const app = express();
 

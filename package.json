@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-server": "tsc && node build/server.js",
     "start": "nodemon -e ts -w ./ -x npm run start-server",
+    "update-metadata": "node_modules/.bin/schemats generate -c postgres://toursapi:toursapi@localhost:5432/toursapi -o src/db/model_generated.ts",
     "dev": "nodemon src/server.ts",
     "build": "tsc -p ."
   },
@@ -25,6 +26,8 @@
     "express": "^4.17.1",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
+    "pg-promise": "^9.0.2",
+    "schemats": "^3.0.3",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

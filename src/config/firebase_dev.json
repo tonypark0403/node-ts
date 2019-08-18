@@ -1,9 +1,12 @@
- {
-    apiKey: "AIzaSyC49HCYTeu_Vlm_WkVOuH0hHpfBjlVzPpM",
-    authDomain: "tourapp-6f667.firebaseapp.com",
-    databaseURL: "https://tourapp-6f667.firebaseio.com",
-    projectId: "tourapp-6f667",
-    storageBucket: "",
-    messagingSenderId: "248644749142",
-    appId: "1:248644749142:web:7c300a6edfcac203"
-  };
+{
+  "type": "service_account",
+  "project_id": "tourapp-6f667",
+  "private_key_id": "0432d5cdfff573ae7521bb808490ba6436f9dade",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQDBfxWsAeus6qmZ\nDp0SivujFg+49q5U8AcZ78mFgdzwuPltrQDCXoE6aI+1hzIED8hRRLRxBJvuprm3\nmeW6/4dcJzksIdFuNdoDGW4nyY9v9lU74hmUoTaFbFYBF82u/g0YY9PFElOR5cRn\nxX+WgorIbWrti1bt/vdvEWgrUjest6AR4ORijyAd6CmTGjIHL5JcT9WulJ8LTltP\nj98Q4fZqXytKxE6kYHy7EW7pnKi1/sj+VxUhxjoy/LuZoZtyO8TVSDvs5Fe89vn9\nFng6rFUxQDzay9FXWndsPLyIVbeCs6kf492ljQywzLz0wWqHhlSV1JBnaoMRg8HM\nQ5qrwSLNAgMBAAECgf8zhv/ZTM+PI2A/e188Qd/jtBWR4zt/+qRISjcHlcAdnP6v\npNdl1S0fvGZWFuBKpmFi0SHga9Hky3GM+vaK6J2n/6czoU9s2oU6ThAXWOrsk6/M\nx1lK7DTOYtV0hNvorgQ9V7ojWH7Paz2y3MvhL4aWSuWEBA9BybPOtu0/eVAxGW4F\nCwgZStJyhGDYVMD6Vel44NppAmpL/uwT9ULfYQEFf+8j/z9omDWWqLA5+7h66unQ\n2xvd7bMTJhi9SKP4x9w86v4lKXLshPTrBZa7nje+QCVULjXM/n6j84cAULLXnTB6\ngnndJtj3ut6i90bkIyGkNBTjba9BT23e0OzQwrkCgYEA4Oq6kb0JsazjfeD1HDBh\nS3mGGc2yfOUnfOlHgouXyLNS8Fcm2276Wpez4uQXiNtMP3+xu+U70PBApcrHFcDg\nnCVz4S4UkizAdvLZyzG9HJT7Ng1K6VX6AgcVo/a3BFRFZrJLb1o1E/IX7HSNv/Ir\nNcenhic4jBj2KQw90wk7hocCgYEA3Dy9T2DlvX1T/5ePLgmypINg2ecOIrbT8VDN\n2zWmb1c7FNmKd8IvGgh2GQ/LDGeNmBQ8QUoTmJTxup7VVylIsGe86Sh867hLW8yo\npVVBI6TNjnSQo17EUjxZpbpb3QJri2wJZTIheEADxgmshvWS8hxtCX0ZAQOPSsoi\nmIaWjQsCgYAQ7fovICCLrCzPe9BXV9jq+nG6nX4S4pjPUSvdyq4ZIE5c4uJ83+Se\nTw7uRCb1WTRrDyyMrRuMhZkIIbRMkeEWP8dyKqrHufCew3bbUZoffaNPFT8PQzZ3\nUpsxZU+vVryGl2MQNaULJEzisn889HiGKsoUUf1ypipZOp+os+g0HwKBgQCdvs+l\ntHS5dbQdhRPj2MRgu006phlk2ekSllrsIRBV/Xfu5iYcwzRzhA36w2ofN2ievheu\nd/1zM3O0xKFwLbzHxXX01rArMjSfywYcbeUbP6aP24Ph0DXz5RAc+U9lDJ+1HCva\nlL6OX+OUDEfL3sdirOOYgUbQiBkxa3i+IOBiowKBgHVyj891Z9K6WYL6BxHS6iGl\nNX3hBymaUuURu4vQBq53N4oYWTCn6cTySmh+6yLT60+20Ow53OG1GtTBuYeybriO\nOJcP60z2cC4Bnu3nj2W1DwYSDObwl4ZoyW4AlTmUuiOHpazWHlc9/KaEgek6wsAf\nqBwUm3VzuzsRsAUGrxxp\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-8n304@tourapp-6f667.iam.gserviceaccount.com",
+  "client_id": "105101536287513819098",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-8n304%40tourapp-6f667.iam.gserviceaccount.com"
+}

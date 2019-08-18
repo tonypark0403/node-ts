@@ -2,15 +2,15 @@ import { Router } from "express";
 import express = require("express");
 import path from "path";
 
-import { logger } from "./general/logging";
-import { apiCors } from "./general/cors";
-import { apiValidation } from "./general/validation";
-import { userRouter } from "./users/apiUsers";
-import { toursRouter } from "./tours/apiTours";
-import { apiDownloadImage } from "./tours/apiDownloadImage";
-import { apiErrorHandler } from "./general/errorHandling";
+import { logger } from "./v1/general/logging";
+import { apiCors } from "./v1/general/cors";
+import { apiValidation } from "./v1/general/validation";
+import { userRouter } from "./v1/users/apiUsers";
+import { toursRouter } from "./v1/tours/apiTours";
+import { apiDownloadImage } from "./v1/tours/apiDownloadImage";
+import { apiErrorHandler } from "./v1/general/errorHandling";
 import { CustomRequestHandler } from "../model/express";
-import { dateParam } from "./general/reqParams/dateParam";
+import { dateParam } from "./v1/general/reqParams/dateParam";
 
 export const routerV1 = Router();
 

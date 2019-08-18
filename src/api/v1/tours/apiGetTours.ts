@@ -4,6 +4,7 @@ import { TourSummary } from "../../../model/shared/tourSummary";
 import { TourFilters } from "../../../model/shared/tourFilters";
 import { db } from "../../../db/db";
 import * as dbModel from "../../../db/model_generated";
+import { cacheSave } from "../general/caching";
 
 export const apiGetTours: RequestHandler = (req, res, next) => {
   //test
@@ -12,14 +13,9 @@ export const apiGetTours: RequestHandler = (req, res, next) => {
   db.any("select * from tours where ${condition:raw}", {
     condition: filters.getCondition()
   }).then((tours: dbModel.tours[]) => {
-    // const filteredData = tours.filter((item: any) => {
-    //   let conditions = [
-    //     filters.location ? item.location == filters.location : true,
-    //     filters.priceMin ? item.price > filters.priceMin : true,
-    //     filters.priceMax ? item.price < filters.priceMax : true
-    //   ];
-    //   return conditions.every(value => value == true);
-    // });
-    res.json(tours.map((item: any) => new TourSummary(item)));
+    console.log("Database Query...");
+    const responseData = tours.map((item: any) => new TourSummary(item));
+    cacheSave(responseData)(req, res, next);
+    res.json(responseData);
   });
 };

@@ -16,17 +16,16 @@ import { apiTokenSignin } from "./auth/apiTokenSignin";
 import { apiSessionVerify } from "./auth/apiSessionVerify";
 import { apiLocalSignup } from "./auth/apiLocalSignup";
 import { apiLocalSignin } from "./auth/apiLocalSignin";
+import RateLimiter from "express-rate-limit";
 
 export const routerV1 = Router();
 
-//practice
-// const authenticator: CustomRequestHandler = (req, res, next) => {
-//   const username = "tony";
-//   req.user = username; //before, user was string, now dbModel.users
-//   next();
-// };
-//practice
-// routerV1.use(authenticator);
+const limit = new RateLimiter({
+  windowMs: 60 * 1000,
+  max: 10
+});
+
+routerV1.use(limit);
 
 routerV1.use(logger);
 

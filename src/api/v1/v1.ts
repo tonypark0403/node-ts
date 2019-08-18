@@ -13,23 +13,26 @@ import { CustomRequestHandler } from "../../model/express";
 import { dateParam } from "./general/reqParams/dateParam";
 import { urlEncodedParser } from "./general/bodyParser";
 import { apiTokenSignin } from "./auth/apiTokenSignin";
+import { apiSessionVerify } from "./auth/apiSessionVerify";
 
 export const routerV1 = Router();
 
 //practice
-const authenticator: CustomRequestHandler = (req, res, next) => {
-  const username = "tony";
-  req.user = username;
-  next();
-};
+// const authenticator: CustomRequestHandler = (req, res, next) => {
+//   const username = "tony";
+//   req.user = username; //before, user was string, now dbModel.users
+//   next();
+// };
 //practice
-routerV1.use(authenticator);
+// routerV1.use(authenticator);
 
 routerV1.use(logger);
 
 routerV1.use(apiCors);
 
 routerV1.use(apiValidation);
+
+routerV1.use(apiSessionVerify);
 
 //practice
 routerV1.get("/headers", (req, res, next) => res.json(req.headers));

@@ -4,8 +4,10 @@ import fs from "fs";
 import path from "path";
 import * as dbModel from "../../../db/model_generated";
 import { db, pgPromise } from "../../../db/db";
+import { CustomRequestHandler } from "../../../model/express";
+import { apiSessionGenerate } from "./apiSessionGenerate";
 
-export const apiTokenSignin: RequestHandler = (req, res, next) => {
+export const apiTokenSignin: CustomRequestHandler = (req, res, next) => {
   const confFile = process.env.FIREBASE_CONF || "firebase_dev.json";
   const confFilePath = path.resolve("./src", "config", confFile);
   console.log(confFilePath);
@@ -27,8 +29,9 @@ export const apiTokenSignin: RequestHandler = (req, res, next) => {
 
       db.one("select * from users where id = ${id}", { id: userID })
         .then((user: dbModel.users) => {
-          res.json(user);
-          //Generate Session Token
+          //   res.json(user);
+          req.user = user;
+          apiSessionGenerate(req, res, next);
         })
         .catch(err => {
           if (err.code == pgPromise.errors.queryResultErrorCode.noData) {
@@ -39,8 +42,9 @@ export const apiTokenSignin: RequestHandler = (req, res, next) => {
             };
             db.none(pgPromise.helpers.insert(user, undefined, "users")).then(
               () => {
-                res.json(user);
-                //Generate Session Token
+                // res.json(user);
+                req.user = user;
+                apiSessionGenerate(req, res, next);
               }
             );
           }

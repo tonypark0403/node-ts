@@ -49,6 +49,15 @@ export class APIError extends Error {
       internalProperties
     );
   }
+  static errUnauthorizedError(properties?: any, internalProperties?: any) {
+    return new APIError(
+      "Unauthorized",
+      "Client Authorization Failed.",
+      401,
+      properties,
+      internalProperties
+    );
+  }
 }
 
 export class PublicError {

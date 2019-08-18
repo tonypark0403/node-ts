@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import { NextFunction } from "connect";
+import * as dbModel from "../db/model_generated";
 
 export interface CustomRequest extends Request {
-  user?: string;
+  user?: dbModel.users;
 }
 
 export interface CustomResponse extends Response {}

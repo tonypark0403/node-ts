@@ -1,7 +1,6 @@
 import { RequestHandler } from "express";
-import uuid from "uuid/v4";
-import { DataStore } from "../../../data/data";
 import { APIError, PublicInfo } from "../../../model/shared/messages";
+import { Tour } from "../../../db_mongo/tour";
 
 export const apiCreateTour: RequestHandler = (req, res, next) => {
   const requiredFields = ["tourTitle", "location"];
@@ -13,7 +12,7 @@ export const apiCreateTour: RequestHandler = (req, res, next) => {
     return next(APIError.errMissingBody());
   }
   const newTour = {
-    id: uuid(),
+    // id: uuid(), - mongodb generates uuid automatically
     location: req.body.location || "",
     tourTitle: req.body.tourTitle || "",
     tourCategory: req.body.tourCategory || "",
@@ -22,7 +21,8 @@ export const apiCreateTour: RequestHandler = (req, res, next) => {
     currency: req.body.currency || "",
     img: []
   };
-  DataStore.tours.push(newTour);
-  // res.json(new PublicInfo("Tour added", 200, { tour: newTour }));
-  res.json(PublicInfo.infoCreated({ newTour: newTour }));
+  // DataStore.tours.push(newTour);
+  new Tour(newTour).save(() => {
+    res.json(PublicInfo.infoCreated({ newTour: newTour }));
+  });
 };

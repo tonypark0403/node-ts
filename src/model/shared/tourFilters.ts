@@ -7,4 +7,12 @@ export class TourFilters {
     this.priceMin = data.priceMin;
     this.priceMax = data.priceMax;
   }
-}
+  asObject() {
+    const filter: any = {};
+    if (this.location) filter.location = this.location;
+    filter.price = {
+      $lte: this.priceMax || 1000000,
+      $gte: this.priceMin || 0
+    }
+    return filter;
+  }

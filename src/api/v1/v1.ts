@@ -11,9 +11,11 @@ import { apiDownloadImage } from "./tours/apiDownloadImage";
 import { apiErrorHandler } from "./general/errorHandling";
 import { CustomRequestHandler } from "../../model/express";
 import { dateParam } from "./general/reqParams/dateParam";
-import { urlEncodedParser } from "./general/bodyParser";
+import { urlEncodedParser, jsonParser } from "./general/bodyParser";
 import { apiTokenSignin } from "./auth/apiTokenSignin";
 import { apiSessionVerify } from "./auth/apiSessionVerify";
+import { apiLocalSignup } from "./auth/apiLocalSignup";
+import { apiLocalSignin } from "./auth/apiLocalSignin";
 
 export const routerV1 = Router();
 
@@ -55,6 +57,10 @@ routerV1.use("/users", userRouter);
 routerV1.use("/tours", toursRouter);
 
 routerV1.post("/tokensignin", urlEncodedParser, apiTokenSignin);
+
+routerV1.post("/localsignup", jsonParser, apiLocalSignup);
+
+routerV1.post("/localsignin", jsonParser, apiLocalSignin);
 
 routerV1.get("/static/download/:id", apiDownloadImage);
 
